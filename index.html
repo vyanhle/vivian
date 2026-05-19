@@ -399,6 +399,53 @@
     max-width: 56ch;
   }
 
+  /* === CONTINUE ITEMS (link to /story, /notes) === */
+  a.doing-item.continue {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  a.doing-item.continue:hover {
+    padding-left: 16px;
+  }
+
+  .doing-item.continue .hand-icon {
+    width: 72px;
+    height: auto;
+    color: var(--accent);
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 3.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.4s ease;
+    transform-origin: center;
+  }
+
+  a.doing-item.continue:hover .arrow-icon {
+    transform: translateX(8px);
+  }
+
+  a.doing-item.continue:hover .pencil-icon {
+    transform: rotate(-5deg) translateY(-3px);
+  }
+
+  .doing-item.continue h3 {
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .doing-item.continue h3 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .doing-item.continue .when {
+    color: var(--accent);
+    font-style: normal;
+  }
+
   /* === BOTTOM NOTE === */
   .bottom-note {
     margin: 120px 0 80px;
@@ -590,6 +637,41 @@
           <p>Less for the test. More for the long shape of an idea.</p>
         </div>
       </div>
+
+      <a href="/story" class="doing-item continue">
+        <div>
+          <svg class="hand-icon arrow-icon" viewBox="0 0 80 50" aria-hidden="true">
+            <path d="M 6 28 Q 18 12, 34 26 Q 46 36, 60 22 Q 66 17, 72 24"/>
+            <path d="M 62 16 L 73 24 L 64 32"/>
+          </svg>
+        </div>
+        <div>
+          <h3>The <em>long version</em></h3>
+          <div class="when">A bigger story, written slowly</div>
+          <p>How I got here, and why bioengineering &mdash; in more detail.</p>
+        </div>
+      </a>
+
+      <a href="/notes" class="doing-item continue">
+        <div>
+          <svg class="hand-icon pencil-icon" viewBox="0 0 70 70" aria-hidden="true">
+            <path d="M 14 10 L 56 12 L 54 60 L 12 58 Z"/>
+            <path d="M 14 18 Q 10 20, 14 22"/>
+            <path d="M 14 28 Q 10 30, 14 32"/>
+            <path d="M 14 38 Q 10 40, 14 42"/>
+            <path d="M 14 48 Q 10 50, 14 52"/>
+            <path d="M 24 22 L 48 23"/>
+            <path d="M 24 32 L 50 33"/>
+            <path d="M 24 42 L 44 43"/>
+            <path d="M 24 52 L 40 53"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Field <em>notes</em></h3>
+          <div class="when">Things I&rsquo;ve been jotting down</div>
+          <p>Small entries from along the way.</p>
+        </div>
+      </a>
 
     </div>
   </section>
