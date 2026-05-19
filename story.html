@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vivian Le — The Long Version</title>
+<meta name="description" content="A longer story, written slowly. Vivian Le's personal narrative.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://vivianx.com/story/">
+<meta property="og:title" content="Vivian Le — The Long Version">
+<meta property="og:description" content="A longer story, written slowly.">
+<meta property="og:image" content="https://vivianx.com/vivian_hero.jpg">
+
+<meta name="theme-color" content="#F3ECDE">
+
+<!-- Favicon - giữ giống trang chủ -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F3ECDE'/%3E%3Ctext x='32' y='48' font-family='Georgia,serif' font-size='44' font-style='italic' font-weight='300' fill='%23B85423' text-anchor='middle'%3Ev%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Caveat:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F3ECDE;
+    --paper-dark: #E8DFCB;
+    --ink: #2A1F12;
+    --ink-soft: #5C4A33;
+    --ink-faint: #8A7958;
+    --rule: #C8B894;
+    --accent: #B85423;
+    --accent-soft: #D77A4A;
+    --sage: #758B6F;
+    --hl: rgba(201, 152, 54, 0.32);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    position: relative;
+  }
+
+  /* Paper background tint */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 60% at 30% 20%, rgba(184, 84, 35, 0.04), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 80% 80%, rgba(117, 139, 111, 0.05), transparent 60%);
+    z-index: 0;
+  }
+
+  /* Subtle grain */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    z-index: 1;
+  }
+
+  .page {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 8vw 80px;
+  }
+
+  /* ============ TOP NAV ============ */
+  .top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 80px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+
+  .top-nav .home-link {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 2px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .top-nav .home-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .top-nav .home-link .arrow {
+    color: var(--accent);
+    margin-right: 6px;
+  }
+
+  .top-nav .stamp {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 4px 10px;
+    letter-spacing: 0.18em;
+    font-size: 10px;
+    transform: rotate(2deg);
+    font-weight: 500;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    margin-bottom: 70px;
+    position: relative;
+  }
+
+  .masthead .kicker {
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+    color: var(--accent);
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .masthead h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(54px, 8vw, 96px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .masthead h1 .italic {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .masthead .standfirst {
+    max-width: 32ch;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .masthead .pen-note {
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    color: var(--sage);
+    margin-top: 14px;
+    transform: rotate(-1deg);
+    display: inline-block;
+  }
+
+  .masthead .pen-note .arrow {
+    color: var(--accent);
+    margin-right: 4px;
+  }
+
+  /* ============ CHAPTER DIVIDER ============ */
+  .chapter-mark {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 60px 0 30px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .chapter-mark .num {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .chapter-mark .label {
+    color: var(--ink-soft);
+  }
+
+  .chapter-mark .line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--rule);
+    background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 4' preserveAspectRatio='none'%3E%3Cpath d='M0 2 Q 25 0, 50 2 T 100 2' stroke='%23C8B894' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 4px;
+  }
+
+  /* ============ CHAPTER HEADING ============ */
+  .chapter-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(28px, 3.6vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+    max-width: 28ch;
+  }
+
+  .chapter-title em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  /* ============ BODY TEXT ============ */
+  .prose p {
+    font-size: 20px;
+    line-height: 1.65;
+    margin-bottom: 18px;
+    color: var(--ink);
+    max-width: 60ch;
+  }
+
+  .prose p .em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .prose p .marker {
+    background: linear-gradient(transparent 60%, var(--hl) 60%, var(--hl) 92%, transparent 92%);
+    padding: 0 3px;
+  }
+
+  .prose p:last-child { margin-bottom: 0; }
+
+  /* Lead paragraph */
+  .lead-paragraph {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--accent);
+    margin-bottom: 30px;
+    max-width: 30ch;
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+  }
+
+  /* Margin notes (occasional) */
+  .margin-note {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: var(--sage);
+    margin: 12px 0;
+    line-height: 1.3;
+    transform: rotate(-0.5deg);
+    display: inline-block;
+    max-width: 30ch;
+  }
+
+  .margin-note .arrow {
+    color: var(--accent);
+    margin-right: 4px;
+  }
+
+  /* ============ ORNAMENT (between sections) ============ */
+  .ornament {
+    text-align: center;
+    margin: 50px 0;
+    color: var(--rule);
+    font-size: 20px;
+    letter-spacing: 1em;
+  }
+
+  /* ============ ENDING SIGNATURE ============ */
+  .signoff {
+    margin-top: 60px;
+    text-align: left;
+  }
+
+  .signoff .sig {
+    font-family: 'Caveat', cursive;
+    font-size: 36px;
+    color: var(--accent);
+    line-height: 1;
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+
+  .signoff .date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 8px;
+  }
+
+  /* ============ BACK LINK ============ */
+  .back-section {
+    margin-top: 100px;
+    padding-top: 30px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+  }
+
+  .back-section .back-link {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 4px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .back-section .back-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .back-section .back-link .arrow {
+    color: var(--accent);
+    margin-right: 6px;
+  }
+
+  .back-section .small-note {
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    color: var(--sage);
+    margin-top: 14px;
+    display: block;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px dashed var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  footer .right {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: var(--accent);
+    text-transform: none;
+    letter-spacing: 0;
+    transform: rotate(-2deg);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 700px) {
+    .page { padding: 40px 6vw 60px; }
+    .masthead { margin-bottom: 50px; }
+    .masthead h1 { font-size: 14vw; }
+    .chapter-title { font-size: 26px; }
+    .prose p { font-size: 18px; }
+    .lead-paragraph { font-size: 20px; }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .masthead { animation: fade-in 1s ease 0.1s both; }
+  .prose { animation: fade-in 1s ease 0.3s both; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Top nav: back link + stamp -->
+  <nav class="top-nav">
+    <a href="/" class="home-link"><span class="arrow">←</span>Vivian Le</a>
+    <span class="stamp">The Long Version</span>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="kicker">by way of introduction —</div>
+    <h1>What I&rsquo;m<br>still <span class="italic">figuring out.</span></h1>
+    <div class="standfirst">A longer story, written slowly. The short version lives on the front page.</div>
+    <div class="pen-note">
+      <span class="arrow">↓</span> read at your own pace.
+    </div>
+  </header>
+
+  <!-- ============ CHAPTER 1 ============ -->
+  <div class="chapter-mark">
+    <span class="num">§ I</span>
+    <span class="label">Crossing</span>
+    <span class="line"></span>
+  </div>
+
+  <h2 class="chapter-title">I crossed an ocean in <em>July 2024.</em></h2>
+
+  <div class="prose">
+    <p>Most of my English came from movies; most of my expectations came from nowhere in particular. The first month in Maryland was mostly listening. At school, in stores, on the bus.</p>
+
+    <p>I learned that <span class="em">"y'all"</span> is one word. That grocery carts are heavier than they look. That there is no graceful way to ask someone to repeat themselves twice.</p>
+
+    <p>Two years in, I&rsquo;m still listening. <span class="marker">But I&rsquo;m asking questions now.</span></p>
+  </div>
+
+  <div class="ornament">·  ·  ·</div>
+
+  <!-- ============ CHAPTER 2 ============ -->
+  <div class="chapter-mark">
+    <span class="num">§ II</span>
+    <span class="label">Why bioengineering</span>
+    <span class="line"></span>
+  </div>
+
+  <h2 class="chapter-title">I picked it before I knew <em>what it really was.</em></h2>
+
+  <div class="prose">
+    <!-- ⚠️ VIVIAN: ĐOẠN NÀY TAO BỊA. THAY BẰNG MOMENT THẬT CỦA EM ⚠️ -->
+    <p>I think I was thirteen, watching my grandmother count out her pills, sorting them into Sunday-through-Saturday compartments. There was something I couldn&rsquo;t put into words then about how a single small thing &mdash; the right molecule, at the right time &mdash; could change a whole day for a whole person.</p>
+
+    <p>That&rsquo;s still where I begin.</p>
+    <!-- ⚠️ HẾT ĐOẠN BỊA ⚠️ -->
+
+    <p>I&rsquo;m not going to pretend it&rsquo;s a clean line from there to here. Mostly it&rsquo;s been a lot of late nights with biology textbooks, a lot of YouTube rabbit holes about the heart, a lot of half-finished notebooks.</p>
+
+    <p>But the shape of the interest hasn&rsquo;t changed. <span class="em">Science that ends at a person.</span> That&rsquo;s the whole thing.</p>
+  </div>
+
+  <div class="ornament">·  ·  ·</div>
+
+  <!-- ============ CHAPTER 3 ============ -->
+  <div class="chapter-mark">
+    <span class="num">§ III</span>
+    <span class="label">Weekends</span>
+    <span class="line"></span>
+  </div>
+
+  <h2 class="chapter-title">I work two jobs <em>on rotation.</em></h2>
+
+  <div class="prose">
+    <p>Saturday nights at a banquet hall &mdash; weddings, mostly. Retail floors when there are shifts.</p>
+
+    <p>I started because I wanted to help at home. I kept going because it turned out I liked the kind of attention work demands. <span class="marker">There is no daydreaming when twelve plates need to leave the kitchen in the next four minutes.</span></p>
+
+    <p>Banquet work taught me my English faster than any class did. There is no choice when an order is wrong. You fix it, smile, and move.</p>
+
+    <div class="margin-note"><span class="arrow">←</span> probably the most useful thing I&rsquo;ve learned in two years didn&rsquo;t happen in a classroom.</div>
+
+    <p>I think a lot about doctors and engineers I&rsquo;ve read about, the way calm under pressure is itself a learned skill.</p>
+  </div>
+
+  <div class="ornament">·  ·  ·</div>
+
+  <!-- ============ CHAPTER 4 ============ -->
+  <div class="chapter-mark">
+    <span class="num">§ IV</span>
+    <span class="label">Now</span>
+    <span class="line"></span>
+  </div>
+
+  <h2 class="chapter-title">I&rsquo;m a sophomore, <em>right now.</em></h2>
+
+  <div class="prose">
+    <p>The plan, if I have to call it that:</p>
+
+    <p>Read a lot. Learn how to ask better questions of professors I haven&rsquo;t met yet. Get into a research lab the summer after junior year. Try to make every year feel less like coasting than the last one.</p>
+
+    <p>I don&rsquo;t have a tidy ending for this page. <span class="em">That&rsquo;s on purpose.</span></p>
+
+    <p>I&rsquo;ll add to it as I go.</p>
+  </div>
+
+  <!-- Signature -->
+  <div class="signoff">
+    <span class="sig">&mdash; v.</span>
+    <span class="date">May 2026 &middot; Timonium, MD</span>
+  </div>
+
+  <!-- Back link -->
+  <div class="back-section">
+    <a href="/" class="back-link"><span class="arrow">←</span>back to the short version</a>
+    <span class="small-note">or read the running notes <a href="/notes" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 1px;">→ here</a>.</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      &copy; Vivian Le &middot; MMXXVI<br>
+      Timonium, MD
+    </div>
+    <div class="right">v.</div>
+  </footer>
+
+</div>
+
+</body>
+</html>

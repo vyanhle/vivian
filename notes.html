@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vivian Le — Field Notes</title>
+<meta name="description" content="Small things, recorded as I go. Vivian Le's running journal.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vivianx.com/notes/">
+<meta property="og:title" content="Vivian Le — Field Notes">
+<meta property="og:description" content="Small things, recorded as I go.">
+<meta property="og:image" content="https://vivianx.com/vivian_hero.jpg">
+
+<meta name="theme-color" content="#F3ECDE">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F3ECDE'/%3E%3Ctext x='32' y='48' font-family='Georgia,serif' font-size='44' font-style='italic' font-weight='300' fill='%23B85423' text-anchor='middle'%3Ev%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Caveat:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F3ECDE;
+    --paper-dark: #E8DFCB;
+    --ink: #2A1F12;
+    --ink-soft: #5C4A33;
+    --ink-faint: #8A7958;
+    --rule: #C8B894;
+    --accent: #B85423;
+    --accent-soft: #D77A4A;
+    --sage: #758B6F;
+    --hl: rgba(201, 152, 54, 0.32);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 60% at 30% 20%, rgba(184, 84, 35, 0.04), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 80% 80%, rgba(117, 139, 111, 0.05), transparent 60%);
+    z-index: 0;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    z-index: 1;
+  }
+
+  .page {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 8vw 80px;
+  }
+
+  /* TOP NAV */
+  .top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 80px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+
+  .top-nav .home-link {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 2px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .top-nav .home-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .top-nav .home-link .arrow {
+    color: var(--accent);
+    margin-right: 6px;
+  }
+
+  .top-nav .stamp {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 4px 10px;
+    letter-spacing: 0.18em;
+    font-size: 10px;
+    transform: rotate(-2deg);
+    font-weight: 500;
+  }
+
+  /* MASTHEAD */
+  .masthead {
+    margin-bottom: 70px;
+    position: relative;
+  }
+
+  .masthead .kicker {
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+    color: var(--accent);
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .masthead h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(60px, 9vw, 110px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .masthead h1 .italic {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .masthead .standfirst {
+    max-width: 36ch;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .masthead .pen-note {
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    color: var(--sage);
+    margin-top: 14px;
+    transform: rotate(-1deg);
+    display: inline-block;
+  }
+
+  .masthead .pen-note .arrow {
+    color: var(--accent);
+    margin-right: 4px;
+  }
+
+  /* ENTRY */
+  .entry {
+    margin-bottom: 70px;
+    position: relative;
+  }
+
+  .entry-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .entry-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .entry-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-left: auto;
+  }
+
+  .entry-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(28px, 3.4vw, 38px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+    max-width: 30ch;
+  }
+
+  .entry-title em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .entry p {
+    font-size: 19px;
+    line-height: 1.65;
+    margin-bottom: 16px;
+    color: var(--ink);
+    max-width: 60ch;
+  }
+
+  .entry p .em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .entry p .marker {
+    background: linear-gradient(transparent 60%, var(--hl) 60%, var(--hl) 92%, transparent 92%);
+    padding: 0 3px;
+  }
+
+  .entry p:last-child { margin-bottom: 0; }
+
+  .entry .margin-note {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: var(--sage);
+    margin: 10px 0;
+    line-height: 1.3;
+    transform: rotate(-0.5deg);
+    display: inline-block;
+    max-width: 30ch;
+  }
+
+  .entry .margin-note .arrow {
+    color: var(--accent);
+    margin-right: 4px;
+  }
+
+  .ornament {
+    text-align: center;
+    margin: 60px 0;
+    color: var(--rule);
+    font-size: 20px;
+    letter-spacing: 1em;
+  }
+
+  .end-section {
+    margin-top: 100px;
+    padding-top: 30px;
+    border-top: 1px dashed var(--rule);
+    text-align: center;
+  }
+
+  .end-section .text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+    max-width: 30ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .end-section .pen {
+    font-family: 'Caveat', cursive;
+    font-size: 24px;
+    color: var(--accent);
+    transform: rotate(-2deg);
+    display: inline-block;
+  }
+
+  .back-section {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+  }
+
+  .back-section .back-link {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 3px;
+    transition: color 0.2s, border-color 0.2s;
+    margin: 0 16px;
+  }
+
+  .back-section .back-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .back-section .back-link .arrow {
+    color: var(--accent);
+    margin-right: 6px;
+  }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px dashed var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  footer .right {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: var(--accent);
+    text-transform: none;
+    letter-spacing: 0;
+    transform: rotate(-2deg);
+  }
+
+  @media (max-width: 700px) {
+    .page { padding: 40px 6vw 60px; }
+    .masthead { margin-bottom: 50px; }
+    .masthead h1 { font-size: 16vw; }
+    .entry-title { font-size: 24px; }
+    .entry p { font-size: 18px; }
+    .entry-head { flex-wrap: wrap; gap: 8px; }
+    .entry-number { margin-left: 0; }
+    .back-section .back-link { display: block; margin: 12px 0; }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .masthead { animation: fade-in 1s ease 0.1s both; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <nav class="top-nav">
+    <a href="/" class="home-link"><span class="arrow">←</span>Vivian Le</a>
+    <span class="stamp">Field Notes</span>
+  </nav>
+
+  <header class="masthead">
+    <div class="kicker">small things, recorded as I go —</div>
+    <h1>Field <span class="italic">notes.</span></h1>
+    <div class="standfirst">Short entries from along the way. Newest at the top, older ones underneath.</div>
+    <div class="pen-note">
+      <span class="arrow">↓</span> updated when something feels worth keeping.
+    </div>
+  </header>
+
+  <!--
+    Để thêm 1 entry mới: copy nguyên block <article class="entry">...</article>,
+    paste ngay BÊN DƯỚI dòng comment này, rồi sửa:
+      entry-date, entry-number, entry-title, các <p>
+    Entry mới nhất luôn ở TRÊN cùng.
+  -->
+
+  <article class="entry">
+    <div class="entry-head">
+      <span class="entry-date">May 2026</span>
+      <span class="entry-number">№ 03</span>
+    </div>
+    <h2 class="entry-title">On reading <em>slowly.</em></h2>
+    <p>I&rsquo;ve been trying to read books the way I used to read them before tests existed. Not for highlights. Not to extract a point.</p>
+    <p>It&rsquo;s slower than I remembered. <span class="marker">Also better.</span></p>
+    <p>Currently on the desk: an old copy of <em>The Emperor of All Maladies</em>, and a borrowed chemistry textbook that&rsquo;s much heavier than it looks.</p>
+    <div class="margin-note"><span class="arrow">←</span> not a recommendation list. just what&rsquo;s open right now.</div>
+  </article>
+
+  <div class="ornament">·  ·  ·</div>
+
+  <article class="entry">
+    <div class="entry-head">
+      <span class="entry-date">April 2026</span>
+      <span class="entry-number">№ 02</span>
+    </div>
+    <h2 class="entry-title">Watching plates leave <em>the kitchen.</em></h2>
+    <p>Banquet shift last weekend was a wedding for two hundred. There&rsquo;s a moment, about an hour in, when the kitchen door starts swinging in a kind of rhythm you didn&rsquo;t notice it had.</p>
+    <p>I think about pressure a lot lately &mdash; the kind that makes things break, and the kind that makes them work.</p>
+    <p>This was the second kind.</p>
+  </article>
+
+  <div class="ornament">·  ·  ·</div>
+
+  <article class="entry">
+    <div class="entry-head">
+      <span class="entry-date">March 2026</span>
+      <span class="entry-number">№ 01</span>
+    </div>
+    <h2 class="entry-title">A summer class, <em>before summer.</em></h2>
+    <p>Signed up for College Algebra this morning. The class starts in June and I&rsquo;m equal parts excited and a little nervous &mdash; mostly because it&rsquo;s the first time something on my schedule wasn&rsquo;t already chosen for me.</p>
+    <p>Not because I&rsquo;m in a rush to be ahead. Because <span class="em">I&rsquo;m curious what it&rsquo;s like</span> to learn at a pace I set.</p>
+    <p>We&rsquo;ll see.</p>
+  </article>
+
+  <div class="end-section">
+    <p class="text">More to come, slowly, as things happen.</p>
+    <span class="pen">&mdash; v.</span>
+  </div>
+
+  <div class="back-section">
+    <a href="/" class="back-link"><span class="arrow">←</span>back to the front page</a>
+    <a href="/story" class="back-link">the long version<span style="color: var(--accent); margin-left: 6px;">↗</span></a>
+  </div>
+
+  <footer>
+    <div>
+      &copy; Vivian Le &middot; MMXXVI<br>
+      Timonium, MD
+    </div>
+    <div class="right">v.</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
