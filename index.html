@@ -48,6 +48,42 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  /* ============================================
+     HAND-DRAWN ART REPLACEMENT SYSTEM
+     ============================================
+     Vivian vẽ ảnh trên giấy, scan, xóa nền, upload vào folder /art/
+     với tên file đúng. Web tự động dùng ảnh thay cho CSS/SVG.
+     Nếu chưa có ảnh → tự fallback về CSS/SVG hiện tại.
+     Xem /art/README.md cho hướng dẫn vẽ.
+  ============================================ */
+  .art-img {
+    display: none;
+    max-width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+  }
+  .art-img.loaded {
+    display: inline-block;
+  }
+  .art-img.loaded + .art-fallback,
+  .art-img.loaded ~ .art-fallback {
+    display: none !important;
+  }
+  /* Inline art (small inline like underline, dots) */
+  .art-img.inline { vertical-align: middle; }
+
+  /* Sized variants */
+  .art-img.hand-icon-img { width: 72px; height: auto; }
+  .art-img.signature-img { width: 64px; height: auto; }
+  .art-img.signature-img-big { width: 140px; height: auto; }
+  .art-img.stamp-img { width: 110px; height: auto; }
+  .art-img.underline-img { width: 100%; height: 8px; display: block; }
+  /* Kicker text (handwritten phrases like "a small introduction —") */
+  .art-img.kicker-img { max-width: 280px; max-height: 50px; height: auto; }
+  /* Item title (short h3 like "Weekend shifts", "the long version") */
+  .art-img.title-img { max-width: 100%; max-height: 70px; height: auto; }
+
   html { scroll-behavior: smooth; }
 
   body {
@@ -369,6 +405,14 @@
     color: var(--accent);
     line-height: 0.9;
     font-weight: 500;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .doing-item .num .art-img {
+    max-width: 80px;
+    max-height: 70px;
   }
 
   .doing-item h3 {
@@ -556,11 +600,17 @@
       VIVIAN LE &middot; FIELD NOTES<br>
       VOL. ONE / MMXXVI
     </div>
-    <div class="stamp">Sophomore Year</div>
+    <div class="stamp">
+      <img src="art/stamp-sophomore.png" alt="Sophomore Year" class="art-img stamp-img" onload="this.classList.add('loaded')" onerror="">
+      <span class="art-fallback">Sophomore Year</span>
+    </div>
   </div>
 
   <section class="masthead">
-    <div class="kicker">a small introduction —</div>
+    <div class="kicker">
+      <img src="art/kicker-intro.png" alt="a small introduction —" class="art-img kicker-img" onload="this.classList.add('loaded')" onerror="">
+      <span class="art-fallback">a small introduction —</span>
+    </div>
     <h1>What I&rsquo;m<br><span class="italic">working on.</span></h1>
     <div class="standfirst">
       A student in Maryland, learning slowly, building patiently, paying attention.
@@ -582,7 +632,10 @@
   <section class="entry">
     <div class="entry-head">
       <span class="date">ENTRY 01 &middot; MAY 2026</span>
-      <h2>The short version.</h2>
+      <h2>
+        <img src="art/title-short-version.png" alt="The short version" class="art-img title-img" onload="this.classList.add('loaded')" onerror="">
+        <span class="art-fallback">The short version.</span>
+      </h2>
       <span class="right">~</span>
     </div>
     <p>Sophomore at Dulaney High School. Drawn to <span class="em">bioengineering</span> because it&rsquo;s the kind of science that ends, eventually, at a person.</p>
@@ -596,43 +649,70 @@
 
   <section class="doing-section">
     <div class="doing-head">
-      <div class="kicker">a short list, on purpose &mdash;</div>
+      <div class="kicker">
+        <img src="art/kicker-list.png" alt="a short list, on purpose —" class="art-img kicker-img" onload="this.classList.add('loaded')" onerror="">
+        <span class="art-fallback">a short list, on purpose &mdash;</span>
+      </div>
       <h2>Things I&rsquo;m <span class="underline-handdrawn">making time for.</span></h2>
     </div>
 
     <div class="doing-list">
 
       <div class="doing-item">
-        <div class="num">01</div>
+        <div class="num">
+          <img src="art/num-01.png" alt="01" class="art-img" onload="this.classList.add('loaded')" onerror="">
+          <span class="art-fallback">01</span>
+        </div>
         <div>
-          <h3>Science National <em>Honor Society</em></h3>
+          <h3>
+            <img src="art/title-snhs.png" alt="Science National Honor Society" class="art-img title-img" onload="this.classList.add('loaded')" onerror="">
+            <span class="art-fallback">Science National <em>Honor Society</em></span>
+          </h3>
           <div class="when">Inducted &middot; May 2026</div>
           <p>Peer learning and outreach. Less ceremony, more presence.</p>
         </div>
       </div>
 
       <div class="doing-item">
-        <div class="num">02</div>
+        <div class="num">
+          <img src="art/num-02.png" alt="02" class="art-img" onload="this.classList.add('loaded')" onerror="">
+          <span class="art-fallback">02</span>
+        </div>
         <div>
-          <h3>A college class, <em>early</em></h3>
+          <h3>
+            <img src="art/title-college.png" alt="A college class, early" class="art-img title-img" onload="this.classList.add('loaded')" onerror="">
+            <span class="art-fallback">A college class, <em>early</em></span>
+          </h3>
           <div class="when">CCBC &middot; Summer 2026</div>
           <p>An experiment with my own pace before the world sets it for me.</p>
         </div>
       </div>
 
       <div class="doing-item">
-        <div class="num">03</div>
+        <div class="num">
+          <img src="art/num-03.png" alt="03" class="art-img" onload="this.classList.add('loaded')" onerror="">
+          <span class="art-fallback">03</span>
+        </div>
         <div>
-          <h3>Weekend <em>shifts</em></h3>
+          <h3>
+            <img src="art/title-weekend.png" alt="Weekend shifts" class="art-img title-img" onload="this.classList.add('loaded')" onerror="">
+            <span class="art-fallback">Weekend <em>shifts</em></span>
+          </h3>
           <div class="when">Hospitality &middot; Retail</div>
           <p>The lessons that won&rsquo;t fit on a transcript. Pressure, composure, the people you meet at 9 PM on a Saturday.</p>
         </div>
       </div>
 
       <div class="doing-item">
-        <div class="num">04</div>
+        <div class="num">
+          <img src="art/num-04.png" alt="04" class="art-img" onload="this.classList.add('loaded')" onerror="">
+          <span class="art-fallback">04</span>
+        </div>
         <div>
-          <h3>Reading, <em>differently</em></h3>
+          <h3>
+            <img src="art/title-reading.png" alt="Reading, differently" class="art-img title-img" onload="this.classList.add('loaded')" onerror="">
+            <span class="art-fallback">Reading, <em>differently</em></span>
+          </h3>
           <div class="when">Ongoing</div>
           <p>Less for the test. More for the long shape of an idea.</p>
         </div>
@@ -640,13 +720,17 @@
 
       <a href="/story" class="doing-item continue">
         <div>
-          <svg class="hand-icon arrow-icon" viewBox="0 0 80 50" aria-hidden="true">
+          <img src="art/arrow-curve.png" alt="" class="art-img hand-icon-img" onload="this.classList.add('loaded')" onerror="">
+          <svg class="hand-icon arrow-icon art-fallback" viewBox="0 0 80 50" aria-hidden="true">
             <path d="M 6 28 Q 18 12, 34 26 Q 46 36, 60 22 Q 66 17, 72 24"/>
             <path d="M 62 16 L 73 24 L 64 32"/>
           </svg>
         </div>
         <div>
-          <h3>The <em>long version</em></h3>
+          <h3>
+            <img src="art/title-long-version.png" alt="The long version" class="art-img title-img" onload="this.classList.add('loaded')" onerror="">
+            <span class="art-fallback">The <em>long version</em></span>
+          </h3>
           <div class="when">A bigger story, written slowly</div>
           <p>How I got here, and why bioengineering &mdash; in more detail.</p>
         </div>
@@ -654,7 +738,8 @@
 
       <a href="/notes" class="doing-item continue">
         <div>
-          <svg class="hand-icon pencil-icon" viewBox="0 0 70 70" aria-hidden="true">
+          <img src="art/notebook.png" alt="" class="art-img hand-icon-img" onload="this.classList.add('loaded')" onerror="">
+          <svg class="hand-icon pencil-icon art-fallback" viewBox="0 0 70 70" aria-hidden="true">
             <path d="M 14 10 L 56 12 L 54 60 L 12 58 Z"/>
             <path d="M 14 18 Q 10 20, 14 22"/>
             <path d="M 14 28 Q 10 30, 14 32"/>
@@ -667,7 +752,10 @@
           </svg>
         </div>
         <div>
-          <h3>Field <em>notes</em></h3>
+          <h3>
+            <img src="art/title-fieldnotes.png" alt="Field notes" class="art-img title-img" onload="this.classList.add('loaded')" onerror="">
+            <span class="art-fallback">Field <em>notes</em></span>
+          </h3>
           <div class="when">Things I&rsquo;ve been jotting down</div>
           <p>Small entries from along the way.</p>
         </div>
@@ -692,7 +780,10 @@
       <a href="mailto:hello@vivianx.com">hello@vivianx.com</a><br>
       <a href="https://github.com">github</a>
     </div>
-    <div class="sign">— v.</div>
+    <div class="sign">
+      <img src="art/signature.png" alt="— v." class="art-img signature-img" onload="this.classList.add('loaded')" onerror="">
+      <span class="art-fallback">— v.</span>
+    </div>
   </footer>
 
 </div>
